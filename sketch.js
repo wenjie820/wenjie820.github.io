@@ -16,8 +16,6 @@ function setup() {
   noStroke();
   
   back = loadGif("data/background.gif");
-  center = loadImage("data/center.png");
-  fore = loadImage("data/foreground.png");
   
   nameParam = getQueryString("name");
   if(nameParam == null) {
@@ -28,6 +26,11 @@ function setup() {
   document.body.addEventListener("touchmove", function (e) {
     e.preventDefault();
   }, {passive: false});
+}
+
+function preload() {
+  center = loadImage("data/center.png");
+  fore = loadImage("data/foreground.png");
 }
 
 function draw() {
