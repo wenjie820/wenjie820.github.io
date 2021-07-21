@@ -2,6 +2,7 @@ let nameParam = "";
 let center;
 let fore;
 let back;
+let back01;
 
 function setup() {
   // createCanvas(500, 500);
@@ -15,8 +16,6 @@ function setup() {
   fill(255);
   noStroke();
   
-  back = loadGif("data/background.gif");
-  
   nameParam = getQueryString("name");
   if(nameParam == null) {
     nameParam = "";
@@ -29,14 +28,19 @@ function setup() {
 }
 
 function preload() {
+  back = loadGif("data/background.gif");
   center = loadImage("data/center.png");
   fore = loadImage("data/foreground.png");
+  back01 = loadGif("data/background01.jpg");
 }
 
 function draw() {
   background(0);
   
-  image(back, width/2, height/2, back.width*height/back.height, height);  
+  image(back01, width/2, height/2, back.width*height/back.height, height); 
+  if(back.loaded()) {
+    image(back, width/2, height/2, back.width*height/back.height, height);  
+  } 
   image(fore, width/2, height/2, fore.width*height/fore.height, height);
   image(center, width/2, height/2, center.width*height/fore.height, center.height*height/fore.height);  
   text(nameParam, width/2, height/2);
